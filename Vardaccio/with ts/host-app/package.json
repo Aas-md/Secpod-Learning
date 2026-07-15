@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@aas/pract-ui": "^1.0.0",
+    "@aas/ui-library": "^1.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "name": "host-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
