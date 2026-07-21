@@ -8,7 +8,7 @@ export default function ScorePage() {
       <h1 className="text-blue-400 text-center"> Scores Per over</h1>
       <div className="flex flex-row gap-2">
         {score?.map((curr, idx) => (
-          <div key={idx} className="flex flex-col items-center">
+          <div name={idx} className="flex flex-col items-center">
             <span>{curr}</span>
             <span className="text-gray-400">{idx}</span>
           </div>
