@@ -19,6 +19,7 @@ export default function PieChartCompo({ scoreData }: { scoreData: number }) {
         maxWidth: "500px",
         maxHeight: "40vh",
         aspectRatio: 1,
+        margin: "0 auto",  
       }}
       responsive
     >

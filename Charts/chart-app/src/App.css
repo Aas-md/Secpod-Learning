@@ -1,8 +1,9 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com");
+@import "tailwindcss";
 
 @theme {
-  --font-roboto: "Roboto", sans-serif;
-  --font-poppins :  "Poppins", sans-serif;
+  /* --font-roboto: "Roboto", sans-serif; */
+  --font-sans: "Roboto", sans-serif;
+  /* --font-poppins :  "Poppins", sans-serif; */
 }

@@ -8,7 +8,7 @@ export default function ({ scoreData }: { scoreData: number }) {
           Cyber hygiene Score
         </p>
       </div>
-      <div className="min-h-0 w-full flex ">
+      <div className="min-h-0 w-full flex items-center justify-center h-full">
         <PieChartCompo scoreData={scoreData} />
       </div>
       {/* <p >💹 0% from last 1 week</p> */}
