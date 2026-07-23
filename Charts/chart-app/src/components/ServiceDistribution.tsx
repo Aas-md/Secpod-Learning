@@ -4,8 +4,8 @@ import TreemapChartCompo from "../TreemapChartCompo";
 
 export default function ServiceDistribution() {
   return (
-    <div className="bg-white h-full rounded-lg p-2 flex flex-col">
-      <div className="flex justify-between">
+    <div className="bg-white h-full min-h-0  rounded-lg flex p-2 flex-col">
+      <div className="flex justify-between ">
         <div className="flex items-center gap-2">
           <p className="text-sm font-semibold text-[#0a58a0]">
             Service Distribution
@@ -16,7 +16,7 @@ export default function ServiceDistribution() {
         <p className="bg-gray-200 text-[#0a58a0] text-sm rounded px-2 opacity-50">CSV</p>
       </div>
 
-    <div className="flex-1 mt-px">
+    <div className="flex-1 mt-px min-h-0 ">
        <TreemapChartCompo/>
     </div>
 

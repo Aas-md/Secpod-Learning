@@ -15,15 +15,15 @@ export default function TreemapChartCompo() {
     {
       name: "Service Distribution",
       children: [
-        { name: "entra", size: 500, color: "#FFEEDB" }, // Sabse bada size, isliye bada box dikhega
-        { name: "security", size: 250, color: "#FFF5CD" }, // Usse chhota
-        { name: "authorization", size: 100, color: "#E2F4D9" },
-        { name: "network", size: 80, color: "#E1F7EC" },
-        { name: "resource..", size: 70, color: "#D9F3F7" },
-        { name: "other", size: 20, color: "yellow" },
-        { name: "other", size: 10, color: "pink" },
-        { name: "other -1", size: 8, color: "green" },
-        { name: "other-2", size: 12, color: "blue" },
+        { name: "entra", size: 450, color: "#FFEFDB" }, // Sabse bada size, isliye bada box dikhega
+        { name: "security", size: 250, color: "#FFF9CD" }, // Usse chhota
+        { name: "authorization", size: 100, color: "#E2FED9" },
+        { name: "network", size: 80, color: "#E1F9EC" },
+        { name: "resource..", size: 70, color: "#D9F7F7" },
+        { name: "other", size: 20, color: "#FFF59D" },
+        { name: "other", size: 10, color: "#FFD1DC" },
+        { name: "other -1", size: 8, color: "#A5D6A7" },
+        { name: "other-2", size: 12, color: "#90CAF9" },
       ],
     },
   ];
@@ -33,25 +33,42 @@ export default function TreemapChartCompo() {
       style={{
         width: "100%",
         maxWidth: "500px",
-        maxHeight: "80vh",
+        maxHeight: "100%",
         aspectRatio: 4 / 3,
       }}
+      // isAnimationActive={false}
       data={data}
       dataKey="size"
       aspectRatio={4 / 3}
       stroke="#fff"
       fill="#8884d8"
+      // nodeInset={6}
+      nodeGap={1}
       content={(props: any) => <CustomTreeMapStyle {...props} />}
     ></Treemap>
   );
 }
 
 interface TreemapProps extends SectorProps {
-  payload: MyTreemap;
+  payload: TreemapChild;
+  depth?: number;
 }
 
 function CustomTreeMapStyle(props: TreemapProps) {
-  const { x, y, width, height, name,color } = props;
+  const { x, y, width, height, name, color, depth } = props;
+
+  if (depth !== 2) return null;
+  console.log(depth);
+
+  const isBoxBigEnough = (width as number) > 80 && (height as number) > 50;
+
+  const customTextStyle: React.CSSProperties = {
+    opacity: 1,
+    fontSize: "12px",
+    fontFamily: "Roboto, sans-serif",
+    stroke: "black",
+  };
+
   return (
     <g>
       <rect
@@ -60,12 +77,27 @@ function CustomTreeMapStyle(props: TreemapProps) {
         width={width}
         height={height}
         fill="#8884d8" // Ek basic purple color
-        // fill={color}
-        stroke="#fff" // White border taaki dabbe alag-alag dikhein
+        stroke="white"
+        strokeWidth={1}
+        fillOpacity={1}
+        style={{ fill: color }}
+        // radius={20}
+        rx={5}
       />
-      <text x={x as number+ 5} y={y as number + 15} fill="#fff" fontSize={18}>
-        {name}
-      </text>
+
+      {isBoxBigEnough && (
+        <text
+          x={(x as number) + (width as number) / 2}
+          y={(y as number) + (height as number) / 2}
+          textAnchor="middle" // Center text horizontally around X
+          dominantBaseline="central"
+          fontSize={18}
+          style={customTextStyle}
+          fillOpacity={1}
+        >
+          {name}
+        </text>
+      )}
     </g>
   );
 }

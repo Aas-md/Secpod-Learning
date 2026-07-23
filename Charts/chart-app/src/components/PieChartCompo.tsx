@@ -26,8 +26,8 @@ export default function PieChartCompo({ scoreData }: { scoreData: number }) {
       <Pie
         data={data}
         dataKey="value"
-        cx="50%"
-        cy="80%"
+        cx="160"
+        cy="100"
         outerRadius="100%"
         innerRadius="65%"
         fill="#8884d8"
@@ -35,15 +35,16 @@ export default function PieChartCompo({ scoreData }: { scoreData: number }) {
         endAngle={0}
         shape={(props: any) => <CustomPieSector {...props} />}
       >
-        <Label position="insideTopRight" fill="red" dy={70} dx={-55} className="font-semibold">0</Label>
-        <Label position="insideTopRight" fill="orange" dy={-50} dx={35} className="font-semibold">50</Label>
-         <Label position="insideTopRight" fill="#2ECC71" dy={70} dx={140} className="font-semibold">100</Label>
-        <Label dy={75} fill="#2ECC71" dx={35} className="text-xs p-1">💹0% from last 1 week</Label>
+        <Label position="insideTopRight" fill="red" dy={27} dx={-45} className="font-semibold text-xs">0</Label>
+        <Label position="insideTopRight" fill="orange" dy={-75} dx={35} className="font-semibold text-xs">50</Label>
+         <Label position="insideTopRight" fill="#2ECC71" dy={27} dx={130} className="font-semibold text-xs">100</Label>
+        <Label dy={45} fill="#2ECC71" dx={40} className="text-xs p-1">💹0% from last 1 week</Label>
         <Label
           position="centerTop"
-          dy={25}
+          dx={5}
+          dy={-10}
           fill="#2ECC71"
-          className="font-semibold text-5xl"
+          className="font-semibold text-4xl"
         >
           {scoreData}
         </Label>

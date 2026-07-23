@@ -12,7 +12,7 @@ import addIcon from '../assets/add-row-svgrepo-com.svg'
 export default function Dashboard() {
   return (
     <>
-      <div className="container flex  flex-wrap bg-gray-200 gap-2 h-52">
+      <div className="container flex  flex-wrap bg-gray-200 gap-2 h-52 overflow-hidden">
         <div className="first-half flex flex-wrap gap-2 w-[calc(75%-1rem)]">
           <DashBoardCard name="Compute Resources" value={data.computeResources} icon={resourceIcon}/>
           <DashBoardCard name= "Monthly Cost" value={data.monthlyCost} icon={costIcon}/>  
