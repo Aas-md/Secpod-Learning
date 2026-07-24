@@ -3,7 +3,6 @@ import {
   Pie,
   PieChart,
   Sector,
-  type PieLabelRenderProps,
   type SectorProps,
 } from "recharts";
 
@@ -178,20 +177,28 @@ export default function ResourceChart() {
         aspectRatio: 1,
       }}
       responsive
-     
     >
+      <defs>
+        <radialGradient id="centerCircleGradient" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="40%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#0a58a0" />
+        </radialGradient>
+      </defs>
       <Pie
         data={data}
         dataKey="value"
         cx="50%"
         cy="50%"
-        innerRadius="45%"
-        outerRadius="60%"
+        innerRadius="50%"
+        outerRadius="65%"
         fill="#8884d8"
         shape={(props: any) => <CustomShape {...props} />}
-        
       />
-      <Label>Hello Label</Label>
+      <Label
+        position={"middle"}
+        content={(props: any) => <CustomLabel {...props} />}
+      />
     </PieChart>
   );
 }
@@ -207,4 +214,52 @@ function CustomShape(props: MydataProps) {
   console.log(props);
 
   return <Sector {...props} fill={colors[index % colors.length]} />;
+}
+
+function CustomLabel(props: any) {
+  const { viewBox } = props;
+  const { cx, cy } = viewBox; // ye actual pixel center milta hai
+
+  return (
+    <g>
+      {/* Background box */}
+      <rect
+        x={cx - 42} // box ki width adjust karne ke liye x shift kar
+        y={cy - 42} // box ki height adjust karne ke liye y shift kar
+        width={85}
+        height={85}
+        rx="50%" // rounded corners
+        ry="50%"
+       fill="#0a58a0"
+        opacity={0.3}
+     
+      />
+
+      {/* Text upar us box ke */}
+      <text
+        x={cx}
+        y={cy - 10}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="#0a58a0"
+        fontSize={10}
+        // fontWeight="bold"
+        fontFamily="Roboto, sans-serif"
+      >
+        Total Resources
+      </text>
+      <text
+        x={cx}
+        y={cy + 12}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="#0a58a0"
+        fontSize={23}
+        fontWeight="bold"
+        fontFamily="Roboto, sans-serif"
+      >
+        2210
+      </text>
+    </g>
+  );
 }
